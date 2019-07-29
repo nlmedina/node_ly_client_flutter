@@ -10,9 +10,30 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Hello World!'),
         ),
-        body: Column(
-          children: <Widget>[Text('This is a test app')],
-        ),
+        body: MyAppBody(),
+      ),
+    );
+  }
+}
+
+class MyAppBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Text('This is a test app'),
+          RaisedButton(
+            child: Text('Is this working?'),
+            onPressed: () {
+              final snackBar = SnackBar(
+                content: Text('It works!'),
+              );
+
+              Scaffold.of(context).showSnackBar(snackBar);
+            },
+          )
+        ],
       ),
     );
   }
